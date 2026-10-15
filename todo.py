@@ -4,14 +4,11 @@ import tkinter as tk
 from pathlib import Path
 from tkinter import messagebox, simpledialog, ttk
 
-# Nếu chạy file .exe, lưu tasks.json cạnh file .exe thay vì trong
-# thư mục tạm mà PyInstaller dùng khi khởi động chế độ --onefile.
 APP_PATH = Path(sys.executable if getattr(sys, "frozen", False) else __file__).resolve()
 DATA_FILE = APP_PATH.with_name("tasks.json")
 
 
 def load_tasks():
-    """Đọc dữ liệu JSON cũ; chưa có file thì bắt đầu bằng danh sách rỗng."""
     if not DATA_FILE.exists():
         return []
 
